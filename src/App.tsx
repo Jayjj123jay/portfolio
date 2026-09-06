@@ -4,10 +4,15 @@ import Skills from "./components/Skills"
 import Projects from "./components/Projects"
 import Experience from "./components/Experience"
 import Contact from "./components/Contact"
+import Reveal from "./components/Reveal"
+import ScrollProgress from "./components/ScrollProgress"
+
 
 function App() {
   return (
     <div className="app">
+      <ScrollProgress />
+
       <header className="navbar">
         <div className="logo">JUNGHO</div>
 
@@ -53,20 +58,23 @@ function App() {
           </div>
         </section>
 
-        {/* About */}
-        <About />
+<Reveal>
+  <About />
+</Reveal>
 
-        {/* Skills */}
-        <Skills />
+<Reveal>
+  <Skills />
+</Reveal>
 
-        {/* Projects */}
-        <Projects />
-        
-        {/* Experience */}
-        <Experience />
+<Projects />
 
-        {/* Contact */}
-        <Contact />
+<Reveal>
+  <Experience />
+</Reveal>
+
+<Reveal>
+  <Contact />
+</Reveal>
       </main>
     </div>
   )
