@@ -1,19 +1,43 @@
 const skillGroups = [
   {
     title: "Frontend",
-    skills: ["React", "TypeScript", "JavaScript", "HTML5", "CSS3"],
+    skills: [
+      "React",
+      "JavaScript",
+      "HTML5",
+      "CSS3",
+    ],
   },
   {
     title: "Backend",
-    skills: ["Node.js", "Express", "PHP", "Python", "Java"],
+    skills: [
+      "Java",
+      "Python",
+      "PHP",
+      "RESTful APIs",
+      "C#",
+    ],
   },
   {
-    title: "Database",
-    skills: ["PostgreSQL", "MySQL", "SQLite"],
+    title: "Database & Cloud",
+    skills: [
+      "MySQL",
+      "SQLite",
+      "SQL",
+      "AWS",
+    ],
   },
   {
-    title: "Cloud & Tools",
-    skills: ["AWS", "Git", "GitHub", "VS Code"],
+    title: "Mobile & Tools",
+    skills: [
+      "Swift",
+      "SwiftUI",
+      "MVVM",
+      "Git",
+      "GitHub",
+      "Testing",
+      "Debugging",
+    ],
   },
 ]
 
@@ -23,12 +47,17 @@ function Skills() {
       <div className="skills-header">
         <div>
           <p className="section-label">SKILLS & TECHNOLOGIES</p>
-          <h2>Full-Stack Toolkit</h2>
+
+          <h2>
+            Full-Stack
+            <br />
+            Toolkit
+          </h2>
         </div>
 
         <p className="skills-intro">
-          Technologies I use to build modern, practical, and scalable web
-          applications.
+          Technologies and development practices I use across frontend,
+          backend, database, cloud, and mobile application development.
         </p>
       </div>
 
@@ -44,6 +73,19 @@ function Skills() {
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="development-practices">
+        <p className="section-label">DEVELOPMENT PRACTICES</p>
+
+        <div className="practice-list">
+          <span>Object-Oriented Programming</span>
+          <span>Agile</span>
+          <span>Scrum</span>
+          <span>Testing</span>
+          <span>Debugging</span>
+          <span>Version Control</span>
+        </div>
       </div>
     </section>
   )

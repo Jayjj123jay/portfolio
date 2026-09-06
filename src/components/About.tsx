@@ -5,25 +5,28 @@ function About() {
         <p className="section-label">ABOUT ME</p>
 
         <h2>
-          From Engineering
+          Engineering Mindset.
           <br />
-          to Full-Stack Development
+          Software Solutions.
         </h2>
 
         <p>
-          I am a recent Master of Information Technology graduate with a
-          background in Mechanical Engineering.
+          I'm a Graduate Full-Stack Developer with a Master of Information
+          Technology from the University of Technology Sydney and a
+          professional background in Mechanical Engineering.
         </p>
 
         <p>
-          My engineering experience strengthened my problem-solving,
-          analytical thinking, and attention to detail, which I now apply to
-          software development.
+          My transition into software development began while working with
+          automation systems and technical engineering environments. Seeing
+          how software could improve systems, automate processes, and solve
+          practical problems motivated me to move into software development.
         </p>
 
         <p>
-          I am focused on building full-stack web and mobile applications using modern
-          frontend, backend, database, and cloud technologies.
+          Today, I combine my engineering problem-solving experience with
+          full-stack, cloud, database, and mobile development skills to build
+          practical and user-focused software applications.
         </p>
       </div>
 
@@ -31,20 +34,31 @@ function About() {
         <div className="about-card">
           <p className="section-label">EDUCATION</p>
 
-          <h3>Master of Information Technology</h3>
-          <p>University of Technology Sydney</p>
+          <div className="about-detail">
+            <span>2024 — 2026</span>
+            <h3>Master of Information Technology</h3>
+            <p>Enterprise Software Development</p>
+            <p>University of Technology Sydney</p>
+          </div>
 
-          <h3>Bachelor of Mechanical Engineering</h3>
-          <p>Korea Maritime and Ocean University</p>
+          <div className="about-detail">
+            <span>2016 — 2019</span>
+            <h3>Bachelor of Engineering</h3>
+            <p>Mechanical Engineering</p>
+            <p>Korea Maritime and Ocean University</p>
+          </div>
         </div>
 
         <div className="about-card">
-          <p className="section-label">FOCUS</p>
+          <p className="section-label">WHAT I BRING</p>
 
-          <p>Full-Stack Web Development</p>
-          <p>Cloud Computing</p>
-          <p>Backend APIs</p>
-          <p>Database Design</p>
+          <div className="about-values">
+            <p>Full-Stack Development</p>
+            <p>Engineering Problem Solving</p>
+            <p>Cloud & Database Experience</p>
+            <p>Cross-Functional Collaboration</p>
+            <p>Adaptability & Continuous Learning</p>
+          </div>
         </div>
       </div>
     </section>

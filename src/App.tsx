@@ -1,6 +1,9 @@
 import "./App.css"
 import About from "./components/About"
 import Skills from "./components/Skills"
+import Projects from "./components/Projects"
+import Experience from "./components/Experience"
+import Contact from "./components/Contact"
 
 function App() {
   return (
@@ -12,11 +15,13 @@ function App() {
           <a href="#about">About</a>
           <a href="#skills">Skills</a>
           <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
           <a href="#contact">Contact</a>
         </nav>
       </header>
 
       <main>
+        {/* Hero */}
         <section className="hero">
           <p className="hero-label">GRADUATE FULL-STACK DEVELOPER</p>
 
@@ -27,9 +32,9 @@ function App() {
           </h1>
 
           <p className="hero-description">
-            Graduate full-stack developer focused on building
+            I build full-stack, mobile, and cloud-based applications
             <br />
-            practical, scalable, and user-focused web applications.
+            with an engineering approach to problem solving.
           </p>
 
           <div className="hero-buttons">
@@ -48,16 +53,20 @@ function App() {
           </div>
         </section>
 
+        {/* About */}
         <About />
+
+        {/* Skills */}
         <Skills />
 
-        <section id="projects" className="placeholder-section">
-          <p>PROJECTS</p>
-        </section>
+        {/* Projects */}
+        <Projects />
+        
+        {/* Experience */}
+        <Experience />
 
-        <section id="contact" className="placeholder-section">
-          <p>CONTACT</p>
-        </section>
+        {/* Contact */}
+        <Contact />
       </main>
     </div>
   )
