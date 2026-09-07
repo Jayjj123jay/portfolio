@@ -5,26 +5,39 @@ import Reveal from "./Reveal"
 const projects = [
   {
     number: "01",
-    title: "Car Rental Web Application",
-    description:
-      "A full-stack vehicle rental platform with RESTful APIs, database integration, search and filtering, CRUD functionality, and cloud deployment.",
-    technologies: ["PHP", "JavaScript", "MySQL", "REST API", "AWS"],
-    type: "FULL-STACK / CLOUD",
-    image: "",
-    slug: "car-rental",
-  },
-  {
-    number: "02",
     title: "QR Payment Mobile Application",
     description:
       "An iOS payment application with QR code scanning, reusable UI components, and a structured MVVM architecture.",
     technologies: ["Swift", "SwiftUI", "MVVM", "QR Scanning"],
     type: "iOS / MOBILE",
-    image: "/projects/qr-payment/qr-payment-cover.png",
+    image: "/projects/qr-payment/qr-payment-main.png", 
     slug: "qr-payment",
   },
+
+  {
+    number: "02",
+    title: "Car Rental Web Application",
+    description:
+      "A full-stack vehicle rental platform with RESTful APIs, database integration, search and filtering, CRUD functionality, and cloud deployment.",
+    technologies: ["PHP", "JavaScript", "MySQL", "REST API", "AWS"],
+    type: "FULL-STACK / CLOUD",
+    image: "/projects/car-rental/car-rental-main.png",
+    slug: "car-rental",
+  },
+
   {
     number: "03",
+    title: "Online Grocery Web Application",
+    description:
+      "A full-stack online grocery shopping application with product browsing, cart management, order processing, and database integration.",
+    technologies: ["PHP", "JavaScript", "MySQL", "HTML", "CSS"],
+    type: "FULL-STACK / WEB",
+    image: "/projects/online-grocery/online-grocery-main.png",
+    slug: "online-grocery",
+  },
+
+  {
+    number: "04",
     title: "Family Finance Management Application",
     description:
       "A desktop financial management application designed to help families track income, expenses, budgets, and account information with database-driven CRUD operations.",
@@ -32,9 +45,11 @@ const projects = [
     type: "DESKTOP / DATABASE",
     image: "",
     slug: "family-finance",
+    hidden: true,
   },
+
   {
-    number: "04",
+    number: "05",
     title: "Bubble Pop iOS Game",
     description:
       "An interactive iOS game featuring dynamic gameplay, user interaction, MVVM architecture, and iterative testing and debugging.",
@@ -42,6 +57,7 @@ const projects = [
     type: "iOS / GAME",
     image: "",
     slug: "bubble-pop",
+    hidden: true,
   },
 ]
 
@@ -100,7 +116,10 @@ function Projects() {
       </div>
 
       <div className="projects-list">
-        {projects.map((project, index) => (
+        {projects
+          .filter((project) => !project.hidden)
+          .map((project, index) => (
+          
           <Reveal
             direction="left"
             delay={index * 0.18}
@@ -160,6 +179,10 @@ function Projects() {
                     className={`project-image ${
                       project.type.includes("MOBILE") || project.type.includes("GAME")
                         ? "mobile-project-image"
+                        : ""
+                    } ${
+                      project.slug === "qr-payment"
+                        ? "qr-project-image"
                         : ""
                     }`}
                   />

@@ -434,6 +434,10 @@ html {
   background: transparent;
 }
 
+.project-image.qr-project-image {
+  padding: 8px;
+}
+
 .project-image-button:hover .project-image {
   transform: scale(1.02);
   opacity: 0.9;
@@ -956,8 +960,12 @@ html {
   }
 
   @media (max-width: 768px) {
-  .project-detail-video {
+  .project-detail-video-mobile {
     max-width: 320px;
+  }
+
+  .project-detail-video-desktop {
+    max-width: 100%;
   }
 }
 }
@@ -1118,10 +1126,19 @@ html {
 .project-detail-video {
   display: block;
   width: 100%;
-  max-width: 360px;
-  max-height: 720px;
   border-radius: 12px;
   background: #000000;
+}
+
+/* Mobile app demo - QR Payment */
+.project-detail-video-mobile {
+  max-width: 360px;
+  max-height: 720px;
+}
+
+/* Desktop/web app demo - Car Rental */
+.project-detail-video-desktop {
+  max-width: 1000px;
 }
 
 /* SCREENSHOTS */
@@ -1217,4 +1234,75 @@ html {
 .project-detail-screenshot-button:hover img {
   transform: scale(1.02);
   opacity: 0.9;
+}
+
+/* EXPERIENCE IMAGE LIGHTBOX */
+
+.experience-image-button {
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: zoom-in;
+  overflow: hidden;
+}
+
+.experience-image-button .experience-image {
+  display: block;
+  width: 100%;
+  transition: transform 0.35s ease;
+}
+
+.experience-image-button:hover .experience-image {
+  transform: scale(1.02);
+}
+
+.experience-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px;
+  background: rgba(0, 0, 0, 0.88);
+
+  cursor: zoom-out;
+}
+
+.experience-lightbox img {
+  display: block;
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+}
+
+.experience-lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+
+  border: none;
+  background: transparent;
+
+  color: #ffffff;
+  font-size: 40px;
+  font-weight: 300;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .experience-lightbox {
+    padding: 20px;
+  }
+
+  .experience-lightbox-close {
+    top: 16px;
+    right: 20px;
+    font-size: 34px;
+  }
 }

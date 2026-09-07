@@ -96,7 +96,7 @@ const projectDetails: Record<string, ProjectDetailData> = {
     github:
       "https://github.com/Jayjj123jay/Car-Rental-App",
 
-    demoVideo: "",
+    demoVideo: "/projects/car-rental/car-rental-demo.mp4",
 
     screenshots: [],
   },
@@ -255,6 +255,76 @@ const projectDetails: Record<string, ProjectDetailData> = {
     demoVideo: "",
 
     screenshots: [],
+  },
+
+  "online-grocery": {
+    title: "Online Grocery Web Application",
+    type: "FULL-STACK / WEB",
+    description:
+      "A full-stack online grocery shopping application with product browsing, cart management, order processing, and database integration.",
+
+    technologies: [
+      "PHP",
+      "JavaScript",
+      "MySQL",
+      "HTML",
+      "CSS",
+    ],
+
+    overview:
+      "This project was developed as an online grocery shopping application that allows users to browse products, search and filter items, manage a shopping cart, and complete an order workflow. The project focused on connecting frontend interactions with backend processing and database-driven product and order management.",
+
+    features: [
+      "Product browsing and search",
+      "Category-based product filtering",
+      "Shopping cart management",
+      "Stock availability handling",
+      "Order summary and checkout workflow",
+      "Database-driven product and order data",
+    ],
+
+    contribution:
+      "Independently developed the application across the frontend, backend, database, shopping cart logic, order workflow, testing, and debugging. I implemented the product browsing interface, cart functionality, customer order form, and database interactions required to support the grocery shopping process.",
+
+    challenges: [
+      {
+        title: "Building the Shopping Cart Workflow",
+        problem:
+          "One of the main challenges was keeping product quantities, prices, stock availability, and cart information consistent as users added or removed products.",
+        solution:
+          "I structured the cart logic around product identifiers and quantity updates, recalculated totals whenever the cart changed, and tested different cart scenarios to make sure the displayed information remained consistent.",
+      },
+      {
+        title: "Managing Product Availability",
+        problem:
+          "The application needed to clearly distinguish between products that were available for purchase and products that were out of stock.",
+        solution:
+          "I connected product stock information to the user interface so unavailable products could be clearly identified and prevented from being added to the cart.",
+      },
+      {
+        title: "Connecting the Cart to the Order Page",
+        problem:
+          "The selected products and calculated totals needed to move correctly from the shopping interface to the final order and customer details page.",
+        solution:
+          "I implemented a structured cart data flow and used stored cart information to dynamically populate the order summary before the customer completed the checkout process.",
+      },
+      {
+        title: "Validating Customer Order Information",
+        problem:
+          "The checkout workflow required reliable customer input before an order could be processed.",
+        solution:
+          "I added form validation and tested different input scenarios to reduce invalid or incomplete order submissions.",
+      },
+    ],
+
+    github: "https://github.com/Jayjj123jay/Online-Grocery-Order-System",
+    demoVideo: "",
+    screenshots: [
+      "/projects/online-grocery/grocery-01.png",
+      "/projects/online-grocery/grocery-02.png",
+      "/projects/online-grocery/grocery-03.png",
+      "/projects/online-grocery/grocery-04.png",
+    ],
   },
 
   "bubble-pop": {
@@ -516,7 +586,11 @@ function ProjectDetail() {
 
           <div className="project-detail-video-wrapper">
             <video
-              className="project-detail-video"
+              className={`project-detail-video ${
+                projectId === "qr-payment"
+                  ? "project-detail-video-mobile"
+                  : "project-detail-video-desktop"
+              }`}
               controls
               playsInline
               preload="metadata"

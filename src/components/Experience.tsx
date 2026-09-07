@@ -1,19 +1,24 @@
 import Reveal from "./Reveal"
+import { useState } from "react"
 
 const experiences = [
   {
-    period: "Oct 2024 — Present",
     company: "Warrikal",
-    location: "Perth, Australia",
     role: "Mechanical Rigger",
+    location: "Perth, Australia",
+    period: "Oct 2024 – Present",
+
     description:
-      "Support industrial maintenance and shutdown activities in high-risk environments, coordinating with multidisciplinary teams to complete mechanical work safely and efficiently.",
+      "Working in demanding industrial environments, supporting safe lifting and positioning of heavy structures and mechanical components.",
+
     highlights: [
-      "Safety-Critical Operations",
-      "Team Coordination",
-      "Practical Problem Solving",
+      "Heavy Lift Operations",
+      "Rigging & Load Planning",
+      "Safety-Critical Work",
+      "Problem Solving",
     ],
-    image: "",
+
+    image: "/experience/warrikal.jpg",
   },
   {
     period: "Jan 2023 — Oct 2024",
@@ -28,7 +33,7 @@ const experiences = [
       "Shutdown Operations",
       "Mining Equipment",
     ],
-    image: "",
+    image: "/experience/linkforce.jpg",
   },
   {
     period: "Aug 2021 — Aug 2022",
@@ -62,78 +67,112 @@ const experiences = [
 ]
 
 function Experience() {
-  return (
-    <section id="experience" className="experience-section">
-      <div className="experience-header">
-        <div>
-          <p className="section-label">PROFESSIONAL EXPERIENCE</p>
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
 
-          <h2>
-            From Engineering
-            <br />
-            to Software
-          </h2>
+  return (
+    <>
+      <section id="experience" className="experience-section">
+        <div className="experience-header">
+          <div>
+            <p className="section-label">PROFESSIONAL EXPERIENCE</p>
+
+            <h2>
+              From Engineering
+              <br />
+              to Software
+            </h2>
+          </div>
+
+          <p className="experience-intro">
+            Professional experience across Australia, South Korea, and
+            Singapore, combining hands-on engineering, automation, and
+            technical problem solving with the software skills I use today.
+          </p>
         </div>
 
-        <p className="experience-intro">
-          Professional experience across Australia, South Korea, and Singapore,
-          combining hands-on engineering, automation, and technical problem
-          solving with the software skills I use today.
-        </p>
-      </div>
+        <div className="experience-list">
+          {experiences.map((experience, index) => (
+            <Reveal
+              direction="left"
+              delay={index * 0.22}
+              key={`${experience.company}-${experience.period}`}
+            >
+              <article className="experience-item">
+                <div className="experience-info">
+                  <div className="experience-meta">
+                    <p>{experience.period}</p>
+                    <span>{experience.location}</span>
+                  </div>
 
-      <div className="experience-list">
-        {experiences.map((experience, index) => (
-          <Reveal
-            direction="left"
-            delay={index * 0.22}
-            key={`${experience.company}-${experience.period}`}
-          >
-            <article className="experience-item">
-              <div className="experience-info">
-                <div className="experience-meta">
-                  <p>{experience.period}</p>
-                  <span>{experience.location}</span>
-                </div>
+                  <div className="experience-content">
+                    <p className="experience-company">
+                      {experience.company}
+                    </p>
 
-                <div className="experience-content">
-                  <p className="experience-company">
-                    {experience.company}
-                  </p>
+                    <h3>{experience.role}</h3>
 
-                  <h3>{experience.role}</h3>
+                    <p className="experience-description">
+                      {experience.description}
+                    </p>
 
-                  <p className="experience-description">
-                    {experience.description}
-                  </p>
-
-                  <div className="experience-highlights">
-                    {experience.highlights.map((highlight) => (
-                      <span key={highlight}>
-                        {highlight}
-                      </span>
-                    ))}
+                    <div className="experience-highlights">
+                      {experience.highlights.map((highlight) => (
+                        <span key={highlight}>
+                          {highlight}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {experience.image ? (
-                <img
-                  src={experience.image}
-                  alt={`${experience.company} work`}
-                  className="experience-image"
-                />
-              ) : (
-                <div className="experience-image-placeholder">
-                  <span>WORK EXPERIENCE</span>
-                  <p>Photo coming soon</p>
-                </div>
-              )}
-            </article>
-          </Reveal>
-        ))}
-      </div>
-    </section>
+                {experience.image ? (
+                  <button
+                    type="button"
+                    className="experience-image-button"
+                    onClick={() =>
+                      setSelectedImage(experience.image)
+                    }
+                    aria-label={`View ${experience.company} work photo`}
+                  >
+                    <img
+                      src={experience.image}
+                      alt={`${experience.company} work`}
+                      className="experience-image"
+                    />
+                  </button>
+                ) : (
+                  <div className="experience-image-placeholder">
+                    <span>WORK EXPERIENCE</span>
+                    <p>Photo coming soon</p>
+                  </div>
+                )}
+              </article>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {selectedImage && (
+        <div
+          className="experience-lightbox"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button
+            type="button"
+            className="experience-lightbox-close"
+            onClick={() => setSelectedImage(null)}
+            aria-label="Close image"
+          >
+            ×
+          </button>
+
+          <img
+            src={selectedImage}
+            alt="Expanded work experience"
+          />
+        </div>
+      )}
+    </>
   )
 }
 
