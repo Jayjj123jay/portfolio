@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import Reveal from "./Reveal"
 
 const projects = [
@@ -10,7 +11,7 @@ const projects = [
     technologies: ["PHP", "JavaScript", "MySQL", "REST API", "AWS"],
     type: "FULL-STACK / CLOUD",
     image: "",
-    github: "#",
+    slug: "car-rental",
   },
   {
     number: "02",
@@ -19,8 +20,8 @@ const projects = [
       "An iOS payment application with QR code scanning, reusable UI components, and a structured MVVM architecture.",
     technologies: ["Swift", "SwiftUI", "MVVM", "QR Scanning"],
     type: "iOS / MOBILE",
-    image: "",
-    github: "#",
+    image: "/projects/qr-payment/qr-payment-cover.png",
+    slug: "qr-payment",
   },
   {
     number: "03",
@@ -30,7 +31,7 @@ const projects = [
     technologies: ["Database", "CRUD", "OOP", "Testing"],
     type: "DESKTOP / DATABASE",
     image: "",
-    github: "#",
+    slug: "family-finance",
   },
   {
     number: "04",
@@ -40,12 +41,44 @@ const projects = [
     technologies: ["Swift", "SwiftUI", "MVVM", "Testing"],
     type: "iOS / GAME",
     image: "",
-    github: "#",
+    slug: "bubble-pop",
   },
 ]
 
 function Projects() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
+
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const state = location.state as {
+      scrollTo?: string
+    } | null
+
+    if (!state?.scrollTo) {
+      return
+    }
+
+    const timer = setTimeout(() => {
+      const element = document.getElementById(state.scrollTo!)
+
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        })
+
+        // Clear navigation state after scrolling
+        navigate("/", {
+          replace: true,
+          state: null,
+        })
+      }
+    }, 300)
+
+    return () => clearTimeout(timer)
+  }, [location.state, navigate])
 
   return (
     <section id="projects" className="projects-section">
@@ -73,12 +106,19 @@ function Projects() {
             delay={index * 0.18}
             key={project.number}
           >
-            <article className="project-card">
+            <article
+              id={`project-${project.slug}`}
+              className="project-card"
+            >
               <div className="project-info">
-                <div className="project-number">{project.number}</div>
+                <div className="project-number">
+                  {project.number}
+                </div>
 
                 <div className="project-content">
-                  <p className="project-type">{project.type}</p>
+                  <p className="project-type">
+                    {project.type}
+                  </p>
 
                   <h3>{project.title}</h3>
 
@@ -88,21 +128,18 @@ function Projects() {
 
                   <div className="project-tech">
                     {project.technologies.map((technology) => (
-                      <span key={technology}>{technology}</span>
+                      <span key={technology}>
+                        {technology}
+                      </span>
                     ))}
                   </div>
 
-                  <a
-                    href={project.github}
+                  <Link
+                    to={`/projects/${project.slug}`}
                     className="project-link"
-                    onClick={(event) => {
-                      if (project.github === "#") {
-                        event.preventDefault()
-                      }
-                    }}
                   >
                     View Project ↗
-                  </a>
+                  </Link>
                 </div>
               </div>
 
@@ -110,13 +147,21 @@ function Projects() {
                 <button
                   type="button"
                   className="project-image-button"
-                  onClick={() => setSelectedImage(project.image)}
+                  onClick={() =>
+                    setSelectedImage(project.image)
+                  }
                   aria-label={`View ${project.title} screenshot`}
                 >
+                
+
                   <img
                     src={project.image}
-                    alt={`${project.title} preview`}
-                    className="project-image"
+                    alt={project.title}
+                    className={`project-image ${
+                      project.type.includes("MOBILE") || project.type.includes("GAME")
+                        ? "mobile-project-image"
+                        : ""
+                    }`}
                   />
                 </button>
               ) : (
@@ -137,7 +182,10 @@ function Projects() {
           tabIndex={0}
           onClick={() => setSelectedImage(null)}
           onKeyDown={(event) => {
-            if (event.key === "Escape" || event.key === "Enter") {
+            if (
+              event.key === "Escape" ||
+              event.key === "Enter"
+            ) {
               setSelectedImage(null)
             }
           }}

@@ -412,7 +412,7 @@ html {
   width: 100%;
   padding: 0;
   border: none;
-  background: none;
+  background: transparent;
   cursor: zoom-in;
   overflow: hidden;
 }
@@ -425,6 +425,13 @@ html {
   transition:
     transform 0.35s ease,
     opacity 0.35s ease;
+}
+
+/* Mobile project images */
+.project-image.mobile-project-image {
+  object-fit: contain;
+  padding: 24px;
+  background: transparent;
 }
 
 .project-image-button:hover .project-image {
@@ -513,56 +520,96 @@ html {
 
 .experience-item {
   display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 60px;
-  padding: 48px 0;
+  grid-template-columns: 1fr 420px;
+  gap: 64px;
+  align-items: center;
+  padding: 64px 0;
   border-bottom: 1px solid #dddddd;
+}
+
+.experience-info {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 32px;
 }
 
 .experience-meta p {
   margin: 0 0 8px;
-  color: #555555;
-  font-size: 14px;
-}
-
-.experience-meta span {
-  color: #999999;
+  color: #666666;
   font-size: 13px;
 }
 
+.experience-meta span {
+  color: #aaaaaa;
+  font-size: 12px;
+}
+
 .experience-company {
-  margin: 0 0 8px;
-  color: #888888;
+  margin: 0 0 10px;
+  color: #999999;
   font-size: 12px;
   font-weight: 600;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.4px;
   text-transform: uppercase;
 }
 
 .experience-content h3 {
   margin: 0 0 16px;
-  font-size: 28px;
+  font-size: clamp(26px, 3vw, 34px);
+  font-weight: 600;
+  letter-spacing: -1px;
 }
 
 .experience-description {
-  max-width: 720px;
-  margin: 0 0 24px;
-  color: #666666;
-  font-size: 16px;
+  max-width: 620px;
+  margin: 0 0 22px;
+  color: #777777;
+  font-size: 15px;
   line-height: 1.7;
 }
 
 .experience-highlights {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 8px 16px;
 }
 
 .experience-highlights span {
-  padding: 7px 10px;
-  background: #f5f5f5;
-  color: #555555;
+  color: #999999;
   font-size: 12px;
+}
+
+.experience-image,
+.experience-image-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+}
+
+.experience-image {
+  display: block;
+  object-fit: cover;
+}
+
+.experience-image-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f6f6f6;
+  border: 1px solid #eeeeee;
+}
+
+.experience-image-placeholder span {
+  color: #aaaaaa;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.experience-image-placeholder p {
+  margin: 8px 0 0;
+  color: #bbbbbb;
+  font-size: 13px;
 }
 
 /* TEMP CONTACT */
@@ -707,6 +754,58 @@ html {
   align-items: flex-start;
 }
 
+
+/* PROJECT CHALLENGES */
+
+.project-detail-challenges {
+  margin-top: 36px;
+  border-top: 1px solid #dddddd;
+}
+
+.project-detail-challenge {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 24px;
+  padding: 36px 0;
+  border-bottom: 1px solid #dddddd;
+}
+
+.project-detail-challenge-number {
+  padding-top: 5px;
+  color: #aaaaaa;
+  font-size: 12px;
+}
+
+.project-detail-challenge h3 {
+  margin: 0 0 24px;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.8px;
+}
+
+.project-detail-challenge-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
+.project-detail-challenge-content span {
+  display: block;
+  margin-bottom: 10px;
+  color: #999999;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+}
+
+.project-detail-challenge-content p {
+  margin: 0;
+  color: #666666;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+
 /* MOBILE */
 
 @media (max-width: 768px) {
@@ -824,10 +923,298 @@ html {
 
   .experience-item {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 36px;
+    padding: 48px 0;
+  }
+
+  .experience-info {
+    grid-template-columns: 1fr;
+    gap: 18px;
   }
 
   .experience-content h3 {
-    font-size: 24px;
+    font-size: 26px;
   }
+
+  .experience-image,
+  .experience-image-placeholder {
+    aspect-ratio: 16 / 10;
+  }
+
+  .project-detail-challenge {
+  grid-template-columns: 40px 1fr;
+  gap: 14px;
+  }
+
+  .project-detail-challenge-content {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .project-detail-challenge h3 {
+    font-size: 21px;
+  }
+
+  @media (max-width: 768px) {
+  .project-detail-video {
+    max-width: 320px;
+  }
+}
+}
+
+/* PROJECT DETAIL */
+
+.project-detail-page {
+  min-height: 100vh;
+  padding: 120px 7%;
+  background: #ffffff;
+}
+
+.project-detail-back {
+  display: inline-block;
+  margin-bottom: 72px;
+  color: #666666;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.project-detail-back:hover {
+  color: #111111;
+}
+
+.project-detail-hero {
+  max-width: 1000px;
+}
+
+.project-detail-hero h1 {
+  max-width: 900px;
+  margin: 0 0 32px;
+  font-size: clamp(52px, 7vw, 96px);
+  line-height: 0.95;
+  letter-spacing: -5px;
+  font-weight: 600;
+}
+
+.project-detail-description {
+  max-width: 700px;
+  margin: 0 0 32px;
+  color: #666666;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.project-detail-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+}
+
+.project-detail-tech span {
+  color: #999999;
+  font-size: 13px;
+}
+
+/* PROJECT DETAIL MOBILE */
+
+@media (max-width: 768px) {
+  .project-detail-page {
+    padding: 100px 6% 80px;
+  }
+
+  .project-detail-back {
+    margin-bottom: 48px;
+  }
+
+  .project-detail-hero h1 {
+    font-size: clamp(46px, 14vw, 72px);
+    letter-spacing: -3px;
+  }
+
+  .project-detail-description {
+    font-size: 16px;
+  }
+
+  /* PROJECT DETAIL MOBILE */
+
+    .project-detail-section {
+      padding: 64px 0;
+    }
+
+    .project-detail-overview {
+      font-size: 16px;
+    }
+
+    .project-detail-feature {
+      grid-template-columns: 40px 1fr;
+      gap: 14px;
+      padding: 20px 0;
+    }
+
+    .project-detail-feature p {
+      font-size: 16px;
+    }
+
+    .project-detail-screenshots {
+      grid-template-columns: 1fr;
+    }
+
+    .project-detail-placeholder {
+      aspect-ratio: 16 / 10;
+    }
+}
+
+/* PROJECT DETAIL SECTIONS */
+
+.project-detail-section {
+  padding: 96px 0;
+  border-top: 1px solid #eeeeee;
+}
+
+.project-detail-overview {
+  max-width: 760px;
+  margin: 28px 0 0;
+  color: #666666;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* KEY FEATURES */
+
+.project-detail-features {
+  margin-top: 36px;
+  border-top: 1px solid #dddddd;
+}
+
+.project-detail-feature {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 24px;
+  align-items: center;
+  padding: 24px 0;
+  border-bottom: 1px solid #dddddd;
+}
+
+.project-detail-feature span {
+  color: #aaaaaa;
+  font-size: 12px;
+}
+
+.project-detail-feature p {
+  margin: 0;
+  color: #222222;
+  font-size: 18px;
+}
+
+/* PROJECT DEMO */
+
+.project-detail-video-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+}
+
+.project-detail-video {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  max-height: 720px;
+  border-radius: 12px;
+  background: #000000;
+}
+
+/* SCREENSHOTS */
+
+.project-detail-screenshots {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.project-detail-screenshots img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.project-detail-placeholder {
+  width: 100%;
+  margin-top: 36px;
+  aspect-ratio: 16 / 7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f6f6f6;
+  border: 1px solid #eeeeee;
+}
+
+.project-detail-placeholder span {
+  color: #aaaaaa;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.project-detail-placeholder p {
+  margin: 8px 0 0;
+  color: #bbbbbb;
+  font-size: 13px;
+}
+
+/* GITHUB */
+
+.project-detail-github {
+  display: inline-block;
+  margin-top: 28px;
+  padding-bottom: 4px;
+  color: #111111;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid #111111;
+  transition: opacity 0.2s ease;
+}
+
+.project-detail-github:hover {
+  opacity: 0.55;
+}
+
+.project-detail-coming-soon {
+  margin: 28px 0 0;
+  color: #999999;
+  font-size: 14px;
+}
+
+.project-detail-screenshot-button {
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: zoom-in;
+  overflow: hidden;
+}
+
+.project-detail-screenshot-button img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: contain;
+  padding: 20px;
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
+}
+
+.project-detail-screenshot-button:hover img {
+  transform: scale(1.02);
+  opacity: 0.9;
+}
+
+.project-detail-screenshot-button:hover img {
+  transform: scale(1.02);
+  opacity: 0.9;
 }
