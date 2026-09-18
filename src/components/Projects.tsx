@@ -37,7 +37,7 @@ const projects = [
   },
 
   {
-    number: "04",
+    number: "05",
     title: "Family Finance Management Application",
     description:
       "A desktop financial management application designed to help families track income, expenses, budgets, and account information with database-driven CRUD operations.",
@@ -49,15 +49,15 @@ const projects = [
   },
 
   {
-    number: "05",
+    number: "04",
     title: "Bubble Pop iOS Game",
     description:
       "An interactive iOS game featuring dynamic gameplay, user interaction, MVVM architecture, and iterative testing and debugging.",
     technologies: ["Swift", "SwiftUI", "MVVM", "Testing"],
     type: "iOS / GAME",
-    image: "",
+    image: "/projects/bubble-pop/bubble-pop-main.png",
     slug: "bubble-pop",
-    hidden: true,
+    hidden: false,
   },
 ]
 
@@ -190,6 +190,10 @@ function Projects() {
                     } ${
                       project.slug === "qr-payment"
                         ? "qr-project-image"
+                        : ""
+                    } ${
+                      project.slug === "bubble-pop"
+                        ? "bubble-pop-project-image"
                         : ""
                     }`}
                   />

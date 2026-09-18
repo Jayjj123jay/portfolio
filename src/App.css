@@ -438,6 +438,10 @@ html {
   padding: 8px;
 }
 
+.project-image.bubble-pop-project-image {
+  padding: 8px;
+}
+
 .project-image-button:hover .project-image {
   transform: scale(1.02);
   opacity: 0.9;
@@ -1047,7 +1051,6 @@ html {
     font-size: 21px;
   }
 
-  @media (max-width: 768px) {
   .project-detail-video-mobile {
     max-width: 320px;
   }
@@ -1111,7 +1114,6 @@ html {
   .contact-info div {
     padding-bottom: 20px;
   }
-}
 }
 
 /* PROJECT DETAIL */
@@ -1214,6 +1216,11 @@ html {
 
     .project-detail-placeholder {
       aspect-ratio: 16 / 10;
+    }
+
+    .project-detail-screenshot-button img.bubble-pop-detail-screenshot {
+      max-width: 300px;
+      padding: 4px;
     }
 }
 
@@ -1368,6 +1375,15 @@ html {
   transition:
     transform 0.35s ease,
     opacity 0.35s ease;
+}
+
+.project-detail-screenshot-button img.bubble-pop-detail-screenshot {
+  max-width: 360px;
+  height: auto;
+  aspect-ratio: auto;
+  margin: 0 auto;
+  padding: 8px;
+  object-fit: contain;
 }
 
 .project-detail-screenshot-button:hover img {

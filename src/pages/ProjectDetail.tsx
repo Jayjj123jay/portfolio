@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from "react"
+import { useState } from "react"
 import { Link, useParams } from "react-router-dom"
 
 type ProjectChallenge = {
@@ -342,7 +342,7 @@ const projectDetails: Record<string, ProjectDetailData> = {
     ],
 
     overview:
-      "This project explored interactive iOS game development using Swift and SwiftUI, with focus on gameplay logic, user interaction, structured architecture, and iterative testing.",
+       "Bubble Pop is an interactive iOS game developed with Swift and SwiftUI. The project focused on implementing real-time game logic, managing application state, handling user interactions, and structuring the application using the MVVM architecture.",
 
     features: [
       "Interactive gameplay",
@@ -353,7 +353,7 @@ const projectDetails: Record<string, ProjectDetailData> = {
     ],
 
     contribution:
-      "Independently designed and developed the entire Bubble Pop iOS game as my first mobile development project. I was responsible for the full development process, including UI implementation, game logic, user interaction, testing, debugging, and overall application behaviour. The project gave me practical experience in understanding how mobile application components and real-time game logic work together.",
+      "Independently designed and developed the entire application as my first iOS project. I implemented the SwiftUI interface, gameplay logic, state management, user interactions, and MVVM structure, while continuously testing and debugging the application to ensure consistent gameplay behaviour.",
 
     challenges: [
       {
@@ -397,11 +397,16 @@ const projectDetails: Record<string, ProjectDetailData> = {
       },
     ],
 
-    github: "",
+    github: "https://github.com/Jayjj123jay/BubblePopGame",
 
     demoVideo: "",
 
-    screenshots: [],
+    screenshots: [  
+      "/projects/bubble-pop/bubble-pop-main.png",
+      "/projects/bubble-pop/bubble-pop-01.png",
+      "/projects/bubble-pop/bubble-pop-02.png",
+      "/projects/bubble-pop/bubble-pop-03.png",
+      "/projects/bubble-pop/bubble-pop-04.png",],
   },
 }
 
@@ -410,36 +415,6 @@ function ProjectDetail() {
 
   const [selectedImage, setSelectedImage] =
     useState<string | null>(null)
-
-  useLayoutEffect(() => {
-    const scrollingElement =
-      document.scrollingElement as HTMLElement | null
-
-    if (!scrollingElement) {
-      return
-    }
-
-    const previousScrollBehavior =
-      scrollingElement.style.scrollBehavior
-
-    // Temporarily disable smooth scrolling
-    scrollingElement.style.scrollBehavior = "auto"
-
-    // Move to the top before the page is painted
-    window.scrollTo(0, 0)
-
-    const frame = requestAnimationFrame(() => {
-      scrollingElement.style.scrollBehavior =
-        previousScrollBehavior
-    })
-
-    return () => {
-      cancelAnimationFrame(frame)
-
-      scrollingElement.style.scrollBehavior =
-        previousScrollBehavior
-    }
-  }, [projectId])
 
   const project =
     projectId
@@ -613,19 +588,22 @@ function ProjectDetail() {
 
         {project.screenshots.length > 0 ? (
           <div className="project-detail-screenshots">
-            {project.screenshots.map((screenshot) => (
+            {project.screenshots.map((screenshot, index) => (
               <button
                 type="button"
                 className="project-detail-screenshot-button"
-                onClick={() =>
-                  setSelectedImage(screenshot)
-                }
+                onClick={() => setSelectedImage(screenshot)}
                 key={screenshot}
-                aria-label={`View ${project.title} screenshot`}
+                aria-label={`View ${project.title} screenshot ${index + 1}`}
               >
                 <img
                   src={screenshot}
-                  alt={`${project.title} screenshot`}
+                  alt={`${project.title} screenshot ${index + 1}`}
+                  className={
+                    projectId === "bubble-pop"
+                      ? "bubble-pop-detail-screenshot"
+                      : ""
+                  }
                 />
               </button>
             ))}

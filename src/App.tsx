@@ -8,10 +8,13 @@ import Reveal from "./components/Reveal"
 import ScrollProgress from "./components/ScrollProgress"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import ProjectDetail from "./pages/ProjectDetail"
+import ScrollToTop from "./components/ScrollToTop"
+
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route
           path="/"
