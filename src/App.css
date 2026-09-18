@@ -700,6 +700,94 @@ html {
   color: #666666;
 }
 
+/* CONTACT FORM */
+
+.contact-form {
+  max-width: 650px;
+  margin-top: 44px;
+}
+
+.contact-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.contact-form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.contact-form-field label {
+  margin-bottom: 10px;
+
+  color: #999999;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+}
+
+.contact-form-field input,
+.contact-form-field textarea {
+  width: 100%;
+  padding: 10px 0 14px;
+
+  border: none;
+  border-bottom: 1px solid #cccccc;
+  border-radius: 0;
+  outline: none;
+
+  background: transparent;
+  color: #222222;
+
+  font-family: inherit;
+  font-size: 16px;
+
+  transition: border-color 0.25s ease;
+}
+
+.contact-form-field textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+.contact-form-field input::placeholder,
+.contact-form-field textarea::placeholder {
+  color: #aaaaaa;
+}
+
+.contact-form-field input:focus,
+.contact-form-field textarea:focus {
+  border-bottom-color: #222222;
+}
+
+.contact-form .button {
+  margin-top: 4px;
+  cursor: pointer;
+}
+
+.contact-form-success,
+.contact-form-error {
+  margin: 18px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.contact-form-success {
+  color: #444444;
+}
+
+.contact-form-error {
+  color: #b42318;
+}
+
+.contact-form .button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 /* SCROLL PROGRESS */
 
 .scroll-progress {
@@ -966,6 +1054,62 @@ html {
 
   .project-detail-video-desktop {
     max-width: 100%;
+  }
+
+  .contact-form-row {
+  grid-template-columns: 1fr;
+  gap: 0;
+  }
+
+  .contact-form {
+    max-width: 100%;
+  }
+
+  .contact-section {
+  grid-template-columns: 1fr;
+  gap: 60px;
+  padding: 80px 6%;
+  }
+
+  .contact-content h2 {
+    font-size: clamp(42px, 12vw, 60px);
+    letter-spacing: -2px;
+  }
+
+  .contact-description {
+    margin: 24px 0;
+    font-size: 16px;
+  }
+
+  .contact-form {
+    width: 100%;
+    margin-top: 36px;
+  }
+
+  .contact-form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .contact-form-field {
+    margin-bottom: 26px;
+  }
+
+  .contact-form-field input,
+  .contact-form-field textarea {
+    font-size: 16px;
+  }
+
+  .contact-form .button {
+    width: 100%;
+  }
+
+  .contact-info {
+    gap: 24px;
+  }
+
+  .contact-info div {
+    padding-bottom: 20px;
   }
 }
 }

@@ -156,6 +156,13 @@ function Projects() {
                   <Link
                     to={`/projects/${project.slug}`}
                     className="project-link"
+                    onClick ={() => {
+                      window.scrollTo({
+                        top : 0,
+                        left: 0,
+                        behavior: "instant",
+                      })
+                    }}
                   >
                     View Project ↗
                   </Link>

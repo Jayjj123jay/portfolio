@@ -47,7 +47,7 @@ const experiences = [
       "Technical Coordination",
       "Project Delivery",
     ],
-    image: "",
+    image: "/experience/kd-navien.jpg",
   },
   {
     period: "May 2019 — May 2020",
@@ -62,7 +62,7 @@ const experiences = [
       "Technical Troubleshooting",
       "Field Engineering",
     ],
-    image: "",
+    image: "/experience/kts-singapore.jpg",
   },
 ]
 
